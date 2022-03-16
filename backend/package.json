@@ -1,0 +1,28 @@
+{
+  "name": "recipesApp",
+  "version": "1.0.0",
+  "description": "Site with recipes (backend part)",
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js",
+    "server": "nodemon App.js"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Ekaterina Motolyanets <katiamotolianec@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.7",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "oracledb": "^5.3.0",
+    "sequelize": "^6.17.0",
+    "sequelize-cli": "^6.4.1",
+    "sequelize-oracle": "^3.3.2-0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

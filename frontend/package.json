@@ -1,0 +1,14 @@
+{
+  "name": "recipesApp",
+  "version": "1.0.0",
+  "description": "Site with recipes (frontend part)",
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Ekaterina Motolyanets <katiamotolianec@gmail.com>",
+  "license": "ISC"
+}

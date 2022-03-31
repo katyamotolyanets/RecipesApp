@@ -19,5 +19,5 @@ module.exports = new Sequelize('orcl', USER_DB, PASSWORD,{
         maxIdleTime: 3000
     },
     dialect: 'oracle',
-    logging: console.log
+    logging: false
 });

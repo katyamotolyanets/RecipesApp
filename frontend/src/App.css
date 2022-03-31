@@ -1,16 +1,78 @@
-.App {
-  text-align: center;
+.recipes-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.recipes-container ul.recipe {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  list-style: none;
+  justify-content: center;
+  width: 90%;
+  max-width: 90%;
+}
+.recipes-container ul.recipe li {
+  width: 100%;
+  max-width: 15em;
+  margin: 1%;
+}
+.recipes-container ul.recipe li a {
+  border: none;
+  background-color: transparent;
+}
+.recipes-container ul.recipe li a .image-container {
+  width: 15em;
+  height: 15em;
+  max-width: 15em;
+  max-height: 15em;
+}
+.recipes-container ul.recipe li a .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+}
+.recipes-container ul.recipe li a div.recipe-title {
+  padding: 5% 0;
+  font-size: 1.5vw;
+}
+.recipes-container ul.recipe li a .recipe-time {
+  color: #917b4e;
+  font-size: 1vw;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "Nunito";
+  src: url("../../../fonts/Nunito-VariableFont_wght.ttf");
+  src: url("../../../fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../../fonts/Nunito-Italic-VariableFont_wght.ttf");
+  src: url("../../../fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Nunito";
+}
+
+button {
+  font-family: "Nunito";
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .App-header {
@@ -36,3 +98,5 @@
     transform: rotate(360deg);
   }
 }
+
+/*# sourceMappingURL=App.css.map */

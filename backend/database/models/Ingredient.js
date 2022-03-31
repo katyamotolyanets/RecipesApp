@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../libs/connection')
 
-const Ingredient = db.define('ingredient', {
+const Ingredient = db.define('INGREDIENTS', {
     ID: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
     NAME: {
         type: Sequelize.STRING(75),
@@ -18,7 +18,6 @@ const Ingredient = db.define('ingredient', {
         tableName: 'INGREDIENTS',
         freezeTableName: true
     })
-
 
 module.exports = Ingredient;
 

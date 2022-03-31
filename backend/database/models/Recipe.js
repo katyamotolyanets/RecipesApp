@@ -3,13 +3,14 @@ const db = require('../libs/connection')
 const Diet = require("./Diet");
 const User = require("./User");
 const MealType = require("./MealType");
+const RecipeIngredient = require("./RecipeIngredient");
 
-const Recipe = db.define('recipe', {
+const Recipe = db.define('RECIPES', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         TITLE: {
             type: Sequelize.STRING(256),
@@ -64,6 +65,10 @@ const Recipe = db.define('recipe', {
         tableName: 'RECIPES',
         freezeTableName: true
     })
+
+/*Recipe.associate = function() {
+    Recipe.hasMany(Ingredient, {through: RecipeIngredient})
+};*/
 
 module.exports = Recipe;
 

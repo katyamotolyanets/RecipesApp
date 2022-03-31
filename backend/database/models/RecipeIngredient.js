@@ -3,7 +3,7 @@ const db = require('../libs/connection')
 const Recipe = require("./Recipe");
 const Ingredient = require("./Ingredient");
 
-const RecipeIngredient = db.define('recipeIngredient', {
+const RecipeIngredient = db.define('RECIPEINGREDIENTS', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,

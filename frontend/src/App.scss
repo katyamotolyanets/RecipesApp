@@ -1,5 +1,9 @@
+@import "components/styles/loader";
 @import "components/styles/recipes";
+@import "components/styles/recipe";
+@import "components/styles/navbar";
 @import "./components/styles/fonts/nunito";
+@import "./components/styles/fonts/prosto-one";
 
 * {
   margin: 0;
@@ -10,12 +14,15 @@
 body {
   font-family: "Nunito";
 }
-button {
+button, input {
   font-family: "Nunito";
 }
 a {
   text-decoration: none;
   color: black;
+}
+ul {
+  list-style: none;
 }
 
 .App-header {

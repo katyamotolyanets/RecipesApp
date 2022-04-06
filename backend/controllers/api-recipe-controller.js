@@ -1,5 +1,7 @@
 const Recipe = require("../database/models/Recipe");
 const Ingredient = require("../database/models/Ingredient");
+const RecipeIngredient = require("../database/models/RecipeIngredient");
+const User = require("../database/models/User");
 
 const getRecipes = (req, res) => {
     Recipe.findAll({
@@ -27,28 +29,35 @@ const getRecipes = (req, res) => {
 }
 
 const getRecipe = (req, res) => {
-    Recipe.find({
+    Recipe.findOne({
         where: {
             ID: req.params.id,
         },
         include: [{
             model: Ingredient,
             attributes: ['NAME'],
-            through: {attributes: []},
+            through: {
+                model: RecipeIngredient,
+                attributes: ['QUANTITYOFINGREDIENT']
+            }
+        },
+        {
+            model: User,
+            attributes: ['USERNAME']
         }]
     })
         .then(recipe => {
-            if (recipe !== null) {
+           if (recipe !== null) {
                 res.status(200).json(recipe)
                 res.end()
-            } else {
-                throw false
             }
         })
-        .catch(() => {
+        .catch((err) => {
+            console.log(err)
             res.status(404).json()
             res.end()
         })
 }
+
 
 module.exports = {getRecipes, getRecipe}

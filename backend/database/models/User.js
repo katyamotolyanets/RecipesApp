@@ -1,12 +1,17 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../libs/connection')
 
-const User = db.define('user', {
+const User = db.define('USER', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
+        },
+        USERNAME: {
+          type: Sequelize.STRING(25),
+          allowNull: false,
+          unique: true
         },
         EMAIL: {
             type: Sequelize.STRING(320),

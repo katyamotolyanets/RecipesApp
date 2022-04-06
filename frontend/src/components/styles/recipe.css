@@ -1,3 +1,6 @@
-
+.recipe-container {
+  position: relative;
+  display: flex;
+}
 
 /*# sourceMappingURL=recipe.css.map */

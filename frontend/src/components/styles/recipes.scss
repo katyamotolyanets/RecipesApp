@@ -1,8 +1,11 @@
+@import "./variables/colors";
 
 .recipes-container {
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
+  align-items: center;
   ul.recipe {
     display: flex;
     flex-wrap: wrap;
@@ -32,14 +35,31 @@
         }
         div.recipe-title {
           padding: 5% 0;
-          font-size: 1.5vw;
+          font-size: 1.5vmax;
         }
         .recipe-time {
-          color: #917b4e;
-          font-size: 1vw;
+          color: $accentTextColor;
+          font-size: 1vmax;
         }
       }
-
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .recipes-container {
+    ul.recipe {
+      li {
+        a {
+          div.recipe-title {
+            font-size: 2vmax;
+          }
+          .recipe-time {
+            font-size: 1.5vmax;
+          }
+        }
+      }
+    }
+
   }
 }

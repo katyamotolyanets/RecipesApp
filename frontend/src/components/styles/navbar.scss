@@ -1,0 +1,94 @@
+@import "./variables/colors";
+
+.navbar-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  z-index: 99;
+  padding: 1% 3%;
+  background: white;
+  .logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    max-height: 100%;
+    max-width: 100%;
+    align-items: center;
+    flex-shrink: 0;
+    flex: auto;
+    a {
+      line-height: 0;
+      font-family: Prosto One;
+      font-size: 1.5vmax;
+      color: $accentTextColor;
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.5s;
+      }
+    }
+  }
+  /*.search-container {
+    position: relative;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    input {
+      width: 40%;
+      height: 2.5em;
+      border: solid 1px #000;
+      border-radius: 1.2em;
+      max-height: 10em;
+      padding-left: 1em;
+      font-size: 1em;
+      &::selection {
+        background-color: $lightBeige;
+      }
+    }
+  }*/
+  .user-profile {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 3em;
+    max-height: 3em;
+    float: right;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      &:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+    }
+    &:hover img:last-child {
+      opacity: 1;
+    }
+    &:hover img:first-child {
+      opacity: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar-container {
+    padding: 3% 10%;
+    align-items: center;
+    .logo {
+      justify-content: left;
+      a {
+        font-size: 2.5vmax;
+      }
+    }
+    .user-profile {
+      max-width: 2em;
+      max-height: 2em;
+    }
+  }
+}

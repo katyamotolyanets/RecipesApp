@@ -1,7 +1,22 @@
+.loader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: bg 1s;
+}
+
 .recipes-container {
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
+  align-items: center;
 }
 .recipes-container ul.recipe {
   display: flex;
@@ -35,13 +50,251 @@
 }
 .recipes-container ul.recipe li a div.recipe-title {
   padding: 5% 0;
-  font-size: 1.5vw;
+  font-size: 1.5vmax;
 }
 .recipes-container ul.recipe li a .recipe-time {
   color: #917b4e;
-  font-size: 1vw;
+  font-size: 1vmax;
 }
 
+@media screen and (max-width: 900px) {
+  .recipes-container ul.recipe li a div.recipe-title {
+    font-size: 2vmax;
+  }
+  .recipes-container ul.recipe li a .recipe-time {
+    font-size: 1.5vmax;
+  }
+}
+h1 {
+  font-size: 2vmax;
+}
+
+.recipe-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10%;
+}
+.recipe-container .recipe-preview {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #c4ad80;
+  margin: 0 3% 3% 3%;
+  padding: 3% 0;
+}
+.recipe-container .recipe-preview .recipe-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 45%;
+  justify-content: center;
+  max-height: 30em;
+  padding-right: 3%;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-title {
+  font-size: 2.5vmax;
+  font-weight: bold;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-author {
+  color: #c4ad80;
+  padding: 2% 0;
+  font-size: 1.25vmax;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-description {
+  padding: 2% 0;
+  font-size: 1.3vmax;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-subinfo {
+  display: flex;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-subinfo div {
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  color: #c4ad80;
+  font-size: 1.5vmax;
+  text-align: center;
+  padding: 5%;
+  border-right: 1px solid #c4ad80;
+  word-wrap: break-word;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-subinfo div:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+.recipe-container .recipe-preview .recipe-info .recipe-subinfo div:first-child {
+  padding-left: 0;
+}
+.recipe-container .recipe-preview .recipe-image {
+  position: relative;
+  display: flex;
+  max-width: 30em;
+  max-height: 30em;
+}
+.recipe-container .recipe-preview .recipe-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+  object-fit: cover;
+}
+.recipe-container .recipe-instructions {
+  margin: 0 15% 5% 15%;
+  display: flex;
+  position: relative;
+}
+.recipe-container .recipe-instructions .recipe-ingredients {
+  display: flex;
+  flex-direction: column;
+  flex: 30%;
+  margin-right: 5%;
+}
+.recipe-container .recipe-instructions .recipe-ingredients .ingredients-list .ingredients-item {
+  padding: 2% 0;
+  font-size: 1.25vmax;
+}
+.recipe-container .recipe-instructions .recipe-directions {
+  display: flex;
+  flex: 70%;
+  flex-direction: column;
+}
+.recipe-container .recipe-instructions .recipe-directions .direction {
+  padding: 1% 0;
+}
+.recipe-container .recipe-instructions .recipe-directions .direction h2 {
+  font-size: 1.3vmax;
+}
+.recipe-container .recipe-instructions .recipe-directions .direction p {
+  font-size: 1.25vmax;
+}
+
+@media screen and (max-width: 900px) {
+  .recipe-container {
+    justify-content: center;
+  }
+  .recipe-container .recipe-preview {
+    display: flex;
+    flex-direction: column;
+  }
+  .recipe-container .recipe-preview .recipe-info {
+    max-width: 30em;
+    padding: 3% 3% 0 0;
+  }
+  .recipe-container .recipe-preview .recipe-info .recipe-title {
+    font-size: 3vmax;
+  }
+  .recipe-container .recipe-preview .recipe-info .recipe-subinfo div {
+    padding: 5%;
+  }
+  .recipe-container .recipe-preview .recipe-image {
+    max-height: 20em;
+  }
+  .recipe-container .recipe-preview .recipe-image img {
+    max-height: 20em;
+    height: 100%;
+  }
+  .recipe-container .recipe-instructions {
+    flex-direction: column;
+    margin: 3%;
+  }
+  .recipe-container .recipe-instructions .recipe-ingredients .ingredients-list .ingredients-item {
+    padding: 1% 0;
+  }
+}
+.navbar-container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  z-index: 99;
+  padding: 1% 3%;
+  background: white;
+  /*.search-container {
+    position: relative;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    input {
+      width: 40%;
+      height: 2.5em;
+      border: solid 1px #000;
+      border-radius: 1.2em;
+      max-height: 10em;
+      padding-left: 1em;
+      font-size: 1em;
+      &::selection {
+        background-color: $lightBeige;
+      }
+    }
+  }*/
+}
+.navbar-container .logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  max-width: 100%;
+  align-items: center;
+  flex-shrink: 0;
+  flex: auto;
+}
+.navbar-container .logo a {
+  line-height: 0;
+  font-family: Prosto One;
+  font-size: 1.5vmax;
+  color: #917b4e;
+}
+.navbar-container .logo a:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+.navbar-container .user-profile {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 3em;
+  max-height: 3em;
+  float: right;
+  flex-shrink: 0;
+}
+.navbar-container .user-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.navbar-container .user-profile img:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.navbar-container .user-profile:hover img:last-child {
+  opacity: 1;
+}
+.navbar-container .user-profile:hover img:first-child {
+  opacity: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .navbar-container {
+    padding: 3% 10%;
+    align-items: center;
+  }
+  .navbar-container .logo {
+    justify-content: left;
+  }
+  .navbar-container .logo a {
+    font-size: 2.5vmax;
+  }
+  .navbar-container .user-profile {
+    max-width: 2em;
+    max-height: 2em;
+  }
+}
 @font-face {
   font-family: "Nunito";
   src: url("../../../fonts/Nunito-VariableFont_wght.ttf");
@@ -56,6 +309,13 @@
   font-weight: normal;
   font-style: italic;
 }
+@font-face {
+  font-family: "Prosto One";
+  src: url("../../../fonts/ProstoOne-Regular.ttf");
+  src: url("../../../fonts/ProstoOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -66,13 +326,17 @@ body {
   font-family: "Nunito";
 }
 
-button {
+button, input {
   font-family: "Nunito";
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+ul {
+  list-style: none;
 }
 
 .App-header {

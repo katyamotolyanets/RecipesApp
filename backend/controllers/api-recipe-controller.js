@@ -9,9 +9,12 @@ const getRecipes = (req, res) => {
             'ID',
             'TITLE',
             'TIMEOFCOOKING',
-            'IMAGE',
-            'AUTHORID'
-        ]
+            'IMAGE'
+        ],
+        include: {
+            model: User,
+            attributes: ['USERNAME']
+        }
     })
         .then(recipes => {
             if (recipes !== null) {

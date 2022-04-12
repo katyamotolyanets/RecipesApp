@@ -7,7 +7,7 @@
   display: flex;
   width: 100%;
   z-index: 99;
-  padding: 1% 3%;
+  padding: 1% 2%;
   background: white;
   .logo {
     position: relative;
@@ -42,18 +42,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      &:last-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-      }
-    }
-    &:hover img:last-child {
-      opacity: 1;
-    }
-    &:hover img:first-child {
-      opacity: 0;
     }
   }
 }

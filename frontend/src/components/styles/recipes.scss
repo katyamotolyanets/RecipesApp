@@ -6,40 +6,60 @@
   position: relative;
   justify-content: center;
   align-items: center;
-  ul.recipe {
+  .recipes-list {
     display: flex;
-    flex-wrap: wrap;
-    height: auto;
-    list-style: none;
+    flex-direction: column;
     justify-content: center;
+    padding: 3% 0;
     width: 90%;
     max-width: 90%;
-    li {
-      width: 100%;
-      max-width: 15em;
-      margin: 1%;
-      a {
-        border: none;
-        background-color: transparent;
-        .image-container {
-          width: 15em;
-          height: 15em;
-          max-width: 15em;
-          max-height: 15em;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5%;
+    flex-wrap: wrap;
+    height: auto;
+    h1 {
+      text-align: center;
+      padding: 1%;
+      color: $accentTextColor;
+      font-family: "Prosto One";
+      font-weight: normal;
+    }
+    ul.recipe {
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
+      justify-content: center;
+      li {
+        width: 100%;
+        max-width: 15em;
+        margin: 1%;
+        a {
+          border: none;
+          background-color: transparent;
+          .image-container {
+            width: 15em;
+            height: 15em;
+            max-width: 15em;
+            max-height: 15em;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 5%;
+            }
           }
-        }
-        div.recipe-title {
-          padding: 5% 0;
-          font-size: 1.5vmax;
-        }
-        .recipe-time {
-          color: $accentTextColor;
-          font-size: 1vmax;
+          .recipe-info {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1vmax;
+            .recipe-time {
+              color: $accentTextColor;
+            }
+          }
+          div.recipe-title {
+            padding: 5% 0;
+            font-size: 1.5vmax;
+          }
+
         }
       }
     }

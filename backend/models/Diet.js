@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize-oracle')
-const db = require('../libs/connection')
+const db = require('../db-connection')
 
-const MealType = db.define('mealType', {
+const Diet = db.define('diet', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -15,10 +15,10 @@ const MealType = db.define('mealType', {
         }},
     {
         timestamps: false,
-        tableName: 'MEALTYPES',
+        tableName: 'DIETS',
         freezeTableName: true
     })
 
-module.exports = MealType;
+module.exports = Diet;
 
 

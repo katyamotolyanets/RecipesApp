@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const Diet = require("../database/models/Diet");
-const User = require("../database/models/User");
-const UserDiet = require("../database/models/UserDiet");
+const Diet = require("../models/Diet");
+const User = require("../models/User");
+const UserDiet = require("../models/UserDiet");
 
 const {
     getDiets,

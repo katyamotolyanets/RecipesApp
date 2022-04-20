@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize-oracle')
-const db = require('../libs/connection')
+const db = require('../db-connection')
 
 const User = db.define('USER', {
         ID: {

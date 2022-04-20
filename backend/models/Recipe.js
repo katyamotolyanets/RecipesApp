@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize-oracle')
-const db = require('../libs/connection')
+const db = require('../db-connection')
 const Diet = require("./Diet");
 const User = require("./User");
 const MealType = require("./MealType");

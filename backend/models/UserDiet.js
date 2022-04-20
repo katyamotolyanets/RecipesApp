@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize-oracle')
-const db = require('../libs/connection')
+const db = require('../db-connection')
 const User = require("./User");
-const Recipe = require("./Recipe");
+const Diet = require("./Diet");
 
-const Favorite = db.define('favorite', {
+const UserDiet = db.define('userDiet', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -18,20 +18,21 @@ const Favorite = db.define('favorite', {
                 key: "id"
             }
         },
-        RECIPEID: {
+        DIETID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: Recipe,
+                model: Diet,
                 key: "id"
             }
+
         }},
     {
         timestamps: false,
-        tableName: 'FAVORITES',
+        tableName: 'USERSDIETS',
         freezeTableName: true
     })
 
-module.exports = Favorite;
+module.exports = UserDiet;
 
 

@@ -1,38 +1,43 @@
 const Sequelize = require('sequelize-oracle')
-const db = require('../libs/connection')
-const User = require("./User");
-const Diet = require("./Diet");
+const db = require('../db-connection')
+const Recipe = require("./Recipe");
+const Ingredient = require("./Ingredient");
 
-const UserDiet = db.define('userDiet', {
+const RecipeIngredient = db.define('RECIPEINGREDIENTS', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        USERID: {
+        RECIPEID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: User,
+                model: Recipe,
                 key: "id"
             }
         },
-        DIETID: {
+        INGREDIENTID: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: Diet,
+                model: Ingredient,
                 key: "id"
             }
-
+        },
+        QUANTITYOFINGREDIENT: {
+            type: Sequelize.STRING(30),
+            allowNull: false,
         }},
     {
         timestamps: false,
-        tableName: 'USERSDIETS',
+        tableName: 'RECIPEINGREDIENTS',
         freezeTableName: true
     })
 
-module.exports = UserDiet;
+
+
+module.exports = RecipeIngredient;
 
 

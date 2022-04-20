@@ -1,4 +1,4 @@
-const Diet = require("../database/models/Diet");
+const Diet = require("../models/Diet");
 
 const getDiets = (req, res) => {
     Diet.findAll()

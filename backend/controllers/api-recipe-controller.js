@@ -1,7 +1,7 @@
-const Recipe = require("../database/models/Recipe");
-const Ingredient = require("../database/models/Ingredient");
-const RecipeIngredient = require("../database/models/RecipeIngredient");
-const User = require("../database/models/User");
+const Recipe = require("../models/Recipe");
+const Ingredient = require("../models/Ingredient");
+const RecipeIngredient = require("../models/RecipeIngredient");
+const User = require("../models/User");
 
 const getRecipes = (req, res) => {
     Recipe.findAll({
@@ -26,7 +26,7 @@ const getRecipes = (req, res) => {
 
         })
         .catch(() => {
-            res.status(404).json()
+            res.status(404).json({message: 'Can not get recipes :('})
             res.end()
         })
 }
@@ -57,7 +57,7 @@ const getRecipe = (req, res) => {
         })
         .catch((err) => {
             console.log(err)
-            res.status(404).json()
+            res.status(404).json({message: 'Can not get recipe with that id :('})
             res.end()
         })
 }

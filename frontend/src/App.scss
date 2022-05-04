@@ -1,10 +1,14 @@
-@import "components/styles/loader";
-@import "components/styles/search";
-@import "components/styles/recipes";
-@import "components/styles/recipe";
-@import "components/styles/navbar";
-@import "./components/styles/fonts/nunito";
-@import "./components/styles/fonts/prosto-one";
+@import "styles/loader";
+@import "styles/search";
+@import "styles/filter";
+@import "styles/search-container";
+@import "styles/authorization";
+@import "styles/recipes";
+@import "styles/recipe";
+@import "styles/navbar";
+@import "styles/user-profile";
+@import "styles/utils/fonts/nunito";
+@import "styles/utils/fonts/prosto-one";
 
 * {
   margin: 0;

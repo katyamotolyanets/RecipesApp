@@ -17,19 +17,7 @@ app.use(require('./routes/api-recipe-route'))
 app.use(require('./routes/api-ingredient-route'))
 app.use(require('./routes/api-diet-route'))
 app.use(require('./routes/api-user-route'))
-
-/*const start = async () => {
-    try {
-        app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
-        db.authenticate()
-            .then(() => console.log('Successfully connect to db'))
-            .catch(err => console.log('Error: ' + err))
-    } catch (error) {
-        console.log(error)
-    }
-}*/
-
-/*start()*/
+app.use(require('./routes/api-meal-type-route'))
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
 db.authenticate()

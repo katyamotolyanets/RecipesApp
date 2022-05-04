@@ -1,0 +1,28 @@
+@import "utils/variables/colors";
+.search-field {
+  input {
+    width: 100%;
+    border: solid 1px transparent;
+    border-radius: 1.2em;
+    padding-left: 10%;
+    max-height: 2.5em;
+    height: 100%;
+    font-size: 1vmax;
+    opacity: 0.7;
+    background: white url(../assets/search-icon.png) no-repeat 2% 50%;
+    background-size: 6%;
+    &::selection {
+      background-color: $lightBeige;
+    }
+  }
+}
+
+
+@media screen and(max-width: 900px) {
+  .search-field {
+    input {
+      background-position: 2% 50%;
+      background-size: 10%;
+    }
+  }
+}

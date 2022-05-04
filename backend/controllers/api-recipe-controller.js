@@ -9,7 +9,8 @@ const getRecipes = (req, res) => {
             'ID',
             'TITLE',
             'TIMEOFCOOKING',
-            'IMAGE'
+            'IMAGE',
+            'MEALTYPEID'
         ],
         include: {
             model: User,
@@ -62,5 +63,26 @@ const getRecipe = (req, res) => {
         })
 }
 
+const createRecipe = (req, res) => {
+    const recipe = {
+        TITLE: req.body.TITLE,
+        TIMEOFCOOKING: req.body.TIMEOFCOOKING,
+        DESCRIPTION: req.body.DESCRIPTION,
+        DIRECTIONS: req.body.DIRECTIONS,
+        IMAGE: req.body.IMAGE,
+        MEALTYPEID: req.body.MEALTYPEID,
+        DIETID: req.body?.DIETID,
+        AUTHORID: req.body?.AUTHORID,
+        CALORIES: req.body?.CALORIES
+    }
+    Recipe.create(recipe)
+        .then(data => {
+            res.status(200).json(data)
+        })
+        .catch((err) => {
+            res.status(500).json({message: err})
+        })
+}
 
-module.exports = {getRecipes, getRecipe}
+
+module.exports = {getRecipes, getRecipe, createRecipe}

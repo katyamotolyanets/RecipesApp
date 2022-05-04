@@ -1,11 +1,10 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../db-connection')
+const MealType = require("./MealType");
 const Diet = require("./Diet");
 const User = require("./User");
-const MealType = require("./MealType");
-const RecipeIngredient = require("./RecipeIngredient");
 
-const Recipe = db.define('RECIPES', {
+const Recipe = db.define('recipe', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -30,31 +29,28 @@ const Recipe = db.define('RECIPES', {
         },
         IMAGE: {
             type: Sequelize.STRING(350),
-            allowNull: false,
-            /*        validate: {
-                        notEmpty: true
-                    }*/
+            allowNull: false
         },
         MEALTYPEID: {
             type: Sequelize.STRING(350),
             allowNull: false,
             references: {
                 model: MealType,
-                key: "id"
+                key: "ID"
             }
         },
         DIETID: {
             type: Sequelize.INTEGER,
             references: {
                 model: Diet,
-                key: "id"
+                key: "ID"
             }
         },
         AUTHORID: {
             type: Sequelize.INTEGER,
             references: {
                 model: User,
-                key: "id"
+                key: "ID"
             }
         },
         CALORIES: {
@@ -66,10 +62,4 @@ const Recipe = db.define('RECIPES', {
         freezeTableName: true
     })
 
-/*Recipe.associate = function() {
-    Recipe.hasMany(Ingredient, {through: RecipeIngredient})
-};*/
-
 module.exports = Recipe;
-
-

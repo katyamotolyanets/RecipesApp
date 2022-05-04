@@ -15,7 +15,7 @@ const Favorite = db.define('favorite', {
             allowNull: false,
             references: {
                 model: User,
-                key: "id"
+                key: "ID"
             }
         },
         RECIPEID: {
@@ -23,7 +23,7 @@ const Favorite = db.define('favorite', {
             allowNull: false,
             references: {
                 model: Recipe,
-                key: "id"
+                key: "ID"
             }
         }},
     {

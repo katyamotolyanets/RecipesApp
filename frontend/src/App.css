@@ -11,6 +11,38 @@
   animation: bg 1s;
 }
 
+.search-field input {
+  width: 100%;
+  border: solid 1px transparent;
+  border-radius: 1.2em;
+  padding-left: 10%;
+  max-height: 2.5em;
+  height: 100%;
+  font-size: 1vmax;
+  opacity: 0.7;
+  background: white url(../assets/search-icon.png) no-repeat 2% 50%;
+  background-size: 6%;
+}
+.search-field input::selection {
+  background-color: #c4ad80;
+}
+
+@media screen and (max-width: 900px) {
+  .search-field input {
+    background-position: 2% 50%;
+    background-size: 10%;
+  }
+}
+.filter-container {
+  width: fit-content;
+  height: fit-content;
+  max-height: 10%;
+}
+.filter-container select {
+  width: fit-content;
+  height: fit-content;
+}
+
 .search-container {
   position: relative;
   display: flex;
@@ -30,43 +62,29 @@
   max-width: 30%;
   width: 100%;
   height: 100%;
-  /*div {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }*/
-}
-.search-container div input {
-  width: 100%;
-  border: solid 1px transparent;
-  border-radius: 1.2em;
-  padding-left: 10%;
-  max-height: 2.5em;
-  height: 100%;
-  font-size: 1vmax;
-  opacity: 0.7;
-  background: white url(../../assets/search-icon.png) no-repeat 2% 50%;
-  background-size: 6%;
-}
-.search-container div input::selection {
-  background-color: #c4ad80;
 }
 
 @media screen and (max-width: 900px) {
   .search-container img {
     height: 20em;
   }
-  .search-container div input {
-    background-position: 2% 50%;
-    background-size: 10%;
-  }
+}
+.authorization-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 0;
+  border: 1px solid black;
+  max-width: 30vw;
+  max-height: 35vh;
+  width: 100%;
+  height: 100%;
+}
+.authorization-container .authorization-form {
+  max-height: 35vh;
+  display: flex;
+  flex-direction: column;
 }
 .recipes-container {
   display: flex;
@@ -284,20 +302,23 @@ h1 {
   top: 0;
   left: 0;
   display: flex;
+  background: white;
+  max-width: 100%;
+  max-height: 4em;
   width: 100%;
   z-index: 99;
   padding: 1% 2%;
-  background: white;
 }
 .navbar-container .logo {
-  position: relative;
   display: flex;
   justify-content: center;
-  max-height: 100%;
-  max-width: 100%;
   align-items: center;
   flex-shrink: 0;
   flex: auto;
+  max-height: 100%;
+  max-width: 100%;
+  top: 0;
+  left: 50%;
 }
 .navbar-container .logo a {
   line-height: 0;
@@ -309,20 +330,39 @@ h1 {
   transform: scale(1.1);
   transition: 0.5s;
 }
-.navbar-container .user-profile {
+.navbar-container .user-links {
+  padding: 0;
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.navbar-container .user-links .user-profile {
   position: relative;
   display: flex;
-  width: 100%;
-  height: 100%;
-  max-width: 3em;
-  max-height: 3em;
-  float: right;
-  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  max-width: 2em;
+  max-height: 2em;
 }
-.navbar-container .user-profile img {
+.navbar-container .user-links .user-profile a {
+  line-height: 0;
+}
+.navbar-container .user-links .user-profile a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.navbar-container .user-links .user-authentication {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.navbar-container .user-links .user-authentication a {
+  white-space: nowrap;
+  padding: 5%;
+  font-size: 1vmax;
 }
 
 @media screen and (max-width: 900px) {
@@ -331,16 +371,33 @@ h1 {
     align-items: center;
   }
   .navbar-container .logo {
+    position: relative;
+    top: 0;
+    left: 0;
     justify-content: left;
   }
   .navbar-container .logo a {
     font-size: 2.5vmax;
   }
-  .navbar-container .user-profile {
-    max-width: 2em;
-    max-height: 2em;
+  .navbar-container .user-links .user-authentication a {
+    font-size: 1.5vmax;
+  }
+  .navbar-container .user-links .user-profile {
+    max-width: 1.5em;
+    max-height: 1.5em;
   }
 }
+.creation-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.creation-form .recipe-creation-form {
+  display: flex;
+  flex-direction: column;
+}
+
 @font-face {
   font-family: "Nunito";
   src: url("../../../fonts/Nunito-VariableFont_wght.ttf");

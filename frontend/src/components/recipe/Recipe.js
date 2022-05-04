@@ -4,11 +4,14 @@ import {useParams} from "react-router";
 
 import "../../App.scss"
 import {Loader} from "../loader/Loader"
+import {useSelector} from "react-redux";
 
 export const Recipe = () => {
-    const [recipe, setRecipe] = useState([])
+    const [recipe, setRecipe] = useState({})
     const [isPending, setPending] = useState(false)
     const {id} = useParams();
+    const isAuthorized = useSelector(state => state.user)
+    console.log(isAuthorized)
 
     useEffect(async () => {
         setPending(true)

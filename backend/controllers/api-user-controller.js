@@ -4,20 +4,41 @@ const {validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 
 const User = require("../models/User");
-const JWT_ACCESS_SECRET_KEY = process.env.JWT_ACCESS_SECRET_KEY
+const Favorite = require("../models/Favorite");
+const Recipe = require("../models/Recipe");
 
-const generateAccessToken = (id, username) => {
-    const payload = {
-        id,
-        username
-    }
-    return jwt.sign(payload, JWT_ACCESS_SECRET_KEY, {expiresIn: '24h'})
-}
+const JWT_ACCESS_SECRET_KEY = process.env.JWT_ACCESS_SECRET_KEY
 
 const getUsers = (req, res) => {
     User.findAll().then(response => {
         res.status(200).json(response)
     })
+}
+
+const getUser = (req, res) => {
+    User
+        .findOne({
+            where: {
+                ID: req.params.id,
+            },
+            include: {
+                model: Recipe,
+                attributes: ['ID', 'TITLE', 'IMAGE'],
+                through: {
+                    attributes: []
+                }
+            }
+        })
+        .then(user => {
+            if (user !== null) {
+                res.status(200).json(user)
+                res.end()
+            }
+        })
+        .catch(() => {
+            res.status(404).json({message: 'Can not find user with that id :('})
+            res.end()
+        })
 }
 
 const registration = async (req, res) => {
@@ -81,9 +102,26 @@ const auth = async (req, res) => {
         }})
 }
 
+const addFavorite = (req, res) => {
+    const favorite = {
+        USERID: req.body.userID,
+        RECIPEID: req.body.recipeID
+    }
+    Favorite.create(favorite)
+        .then(data => {
+            res.status(200).json(data)
+        })
+        .catch((err) => {
+            console.log(err)
+            res.status(500).json({message: err})
+        })
+}
+
 module.exports = {
     getUsers,
+    getUser,
     registration,
     login,
-    auth
+    auth,
+    addFavorite
 }

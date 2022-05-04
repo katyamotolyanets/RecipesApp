@@ -3,7 +3,7 @@ const db = require('../db-connection')
 const User = require("./User");
 const Diet = require("./Diet");
 
-const UserDiet = db.define('userDiet', {
+const UserDiet = db.define('user_diet', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,

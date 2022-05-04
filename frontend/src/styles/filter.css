@@ -1,0 +1,11 @@
+.filter-container {
+  width: fit-content;
+  height: fit-content;
+  max-height: 10%;
+}
+.filter-container select {
+  width: fit-content;
+  height: fit-content;
+}
+
+/*# sourceMappingURL=filter.css.map */

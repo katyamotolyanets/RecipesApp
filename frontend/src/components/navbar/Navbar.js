@@ -2,12 +2,13 @@ import {Link} from "react-router-dom";
 
 import "../../App.scss"
 import userIcon from "../../assets/user-icon.png"
-import {useDispatch, useSelector} from "react-redux";
-import {logoutUser} from "../../reducers/userReducer";
+import {useSelector} from "react-redux";
 
 export const Navbar = () => {
     const isAuthorized = useSelector(state => state.user.isAuthorized)
-    const dispatch = useDispatch()
+    const user = useSelector(state => state.user.currentUser)
+    const {ID: id} = user
+
     return (
         <header className="navbar-container">
             <div className="logo">
@@ -15,19 +16,20 @@ export const Navbar = () => {
                     recipe
                 </Link>
             </div>
-            <div className="user-profile">
+            <div className="user-links">
                 {isAuthorized ?
-                    <div>
-                        <button onClick={() => dispatch(logoutUser())}>Log out</button>
-                        <img src={userIcon} className="user-image"/>
+                    <div className="user-profile">
+                        <Link to={{pathname: `/user/${id}`}}>
+                            <img src={userIcon} className="user-image"/>
+                        </Link>
                     </div>
                     :
-                    <div>
+                    <div className="user-authentication">
                         <Link to={{pathname: `/login`}}>
-                            <p>Log in</p>
+                            Log in
                         </Link>
                         <Link to={{pathname: `/register`}}>
-                            <p>Sign up</p>
+                            Sign up
                         </Link>
                     </div>
                 }

@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../db-connection')
+const User = require("./User");
+const UserDiet = require("./UserDiet");
 
 const Diet = db.define('diet', {
         ID: {
@@ -18,6 +20,8 @@ const Diet = db.define('diet', {
         tableName: 'DIETS',
         freezeTableName: true
     })
+
+Diet.belongsToMany(User, { through: UserDiet });
 
 module.exports = Diet;
 

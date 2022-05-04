@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../db-connection')
 
-const User = db.define('USER', {
+const User = db.define('user', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,

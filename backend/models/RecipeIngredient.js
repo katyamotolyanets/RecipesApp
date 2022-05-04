@@ -3,7 +3,7 @@ const db = require('../db-connection')
 const Recipe = require("./Recipe");
 const Ingredient = require("./Ingredient");
 
-const RecipeIngredient = db.define('RECIPEINGREDIENTS', {
+const RecipeIngredient = db.define('recipe_ingredient', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -15,7 +15,7 @@ const RecipeIngredient = db.define('RECIPEINGREDIENTS', {
             allowNull: false,
             references: {
                 model: Recipe,
-                key: "id"
+                key: "ID"
             }
         },
         INGREDIENTID: {
@@ -23,7 +23,7 @@ const RecipeIngredient = db.define('RECIPEINGREDIENTS', {
             allowNull: false,
             references: {
                 model: Ingredient,
-                key: "id"
+                key: "ID"
             }
         },
         QUANTITYOFINGREDIENT: {

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../db-connection')
 
-const MealType = db.define('mealType', {
+const MealType = db.define('meal_type', {
         ID: {
             type: Sequelize.INTEGER,
             allowNull: false,

@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize-oracle')
 const db = require('../db-connection')
+const RecipeIngredient = require("./RecipeIngredient");
+const Recipe = require("./Recipe");
 
-const Ingredient = db.define('INGREDIENTS', {
+const Ingredient = db.define('ingredient', {
     ID: {
         type: Sequelize.INTEGER,
         allowNull: false,

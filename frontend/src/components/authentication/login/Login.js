@@ -1,11 +1,13 @@
 import {useState} from "react";
-import AuthService from "../../../services/auth.service";
 import {useDispatch} from "react-redux";
+
+import "../../../App.scss"
+import AuthService from "../../../services/auth.service";
+
 
 export const Login = () => {
     const dispatch = useDispatch();
     const [data, setData] = useState({
-        username: "",
         email: "",
         password: ""
     });
@@ -19,20 +21,30 @@ export const Login = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(AuthService.login(data.email, data.password))
+        try {
+            e.preventDefault();
+            dispatch(AuthService.login(data.email, data.password))
+        } catch (err) {
+            console.log(err)
+        }
     };
-
     return (
-        <div>
-            <form method="POST" onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" onChange={handleChange}/>
+        <div className="authorization-container">
+            <h1>Log in!</h1>
+            <form method="POST" onSubmit={handleSubmit} className="authorization-form">
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" onChange={handleChange}/>
+                <input type="email"
+                       name="email"
+                       onChange={handleChange}
+                       className="authorization-input"
+                />
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" onChange={handleChange}/>
-                <button type="submit">Register</button>
+                <input type="password"
+                       name="password"
+                       onChange={handleChange}
+                       className="authorization-input"
+                />
+                <button type="submit">Login</button>
             </form>
         </div>
     )

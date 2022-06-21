@@ -10,7 +10,7 @@ const {
     getIngredient
 } = require('../controllers/api-ingredient-controller')
 
-Ingredient.belongsToMany(Recipe, { through: RecipeIngredient });
+Ingredient.belongsToMany(Recipe, { through: RecipeIngredient, foreignKey: "INGREDIENTID" });
 
 router.get('/api/ingredients', getIngredients);
 router.get('/api/ingredients/:id', getIngredient);

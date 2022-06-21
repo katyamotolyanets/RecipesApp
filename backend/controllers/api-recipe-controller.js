@@ -1,3 +1,4 @@
+const elasticlunr = require('../elasticlunr.js')
 const Recipe = require("../models/Recipe");
 const Ingredient = require("../models/Ingredient");
 const RecipeIngredient = require("../models/RecipeIngredient");
@@ -84,5 +85,45 @@ const createRecipe = (req, res) => {
         })
 }
 
+const findRecipes = (req, res) => {
+    res.send(Recipe.findAll({
+        attributes: [
+            'ID',
+            'TITLE'
+        ]
+    })
+        .then(data => {
+            return JSON.stringify(data)
+        }))
+}
 
-module.exports = {getRecipes, getRecipe, createRecipe}
+const searchRecipe = (req, res) => {
+    let index = elasticlunr(function () {
+        this.addField('TITLE');
+        this.setRef('ID');
+    });
+    Recipe.findAll({
+        attributes: [
+            'ID',
+            'TITLE'
+        ],
+        raw : true
+    }).then(data => {
+        data.forEach(recipe => {
+            let rec = JSON.stringify(recipe)
+            index.addDoc(JSON.parse(rec ));
+        })
+        return res.status(200).json(index.search(`?*${req.query.search}*`, {
+            bool: "OR",
+            expand: true
+        }));
+    })
+}
+
+
+module.exports = {
+    getRecipes,
+    getRecipe,
+    createRecipe,
+    searchRecipe
+}

@@ -12,19 +12,24 @@ const Favorite = require("../models/Favorite");
 const {
     getRecipes,
     getRecipe,
-    createRecipe
+    createRecipe,
+    searchRecipe
 } = require('../controllers/api-recipe-controller')
 
 
-Recipe.belongsToMany(Ingredient, { through: RecipeIngredient });
+Recipe.belongsToMany(Ingredient, { through: RecipeIngredient, foreignKey: "RECIPEID" });
 Recipe.belongsTo(User, {foreignKey: 'AUTHORID'})
 Recipe.belongsTo(MealType, {foreignKey: 'MEALTYPEID'})
 Recipe.belongsTo(Diet, {foreignKey: 'DIETID'})
 Recipe.belongsToMany(User, {through: Favorite, foreignKey: "RECIPEID"})
 
-
-router.get('/api/recipes', getRecipes);
 router.get('/api/recipes/:id', getRecipe);
 router.post('/api/recipes', createRecipe);
+router.get('/api/recipes/', (req, res) => {
+    if (req.query.search)
+        searchRecipe(req, res)
+    else
+        getRecipes(req, res)
+});
 
 module.exports = router

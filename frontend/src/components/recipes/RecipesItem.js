@@ -1,17 +1,24 @@
-import React from "react";
 import {Link} from "react-router-dom";
+import {ButtonAddToFavorite} from "../button-add-to-favorite/ButtonAddToFavorite";
+import "../../App.scss"
 
-export const RecipesItem = ({recipe}) => {
+export const RecipesItem = (props) => {
     const {
         ID: id,
         IMAGE: image,
         TITLE: title,
         TIMEOFCOOKING: timeOfCooking,
         USER: user
-    } = recipe
+    } = props.recipe
+
 
     return (
-        <li>
+        <div className="recipe-item-container">
+            <ButtonAddToFavorite
+                userID={user?.ID}
+                recipeID={id}
+                favorites={props.favorites}
+            />
             <Link to={{pathname: `/recipes/${id}`}}>
                 <div className="image-container">
                     <img src={image}></img>
@@ -24,6 +31,6 @@ export const RecipesItem = ({recipe}) => {
                     }</div>
                 </div>
             </Link>
-        </li>
+        </div>
     );
 };

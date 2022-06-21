@@ -5,12 +5,16 @@ import "../../App.scss"
 import {Loader} from "../loader/Loader"
 import {RecipesItem} from "./RecipesItem";
 import {Filter} from "../filter/Filter";
+import {ButtonAddToFavorite} from "../button-add-to-favorite/ButtonAddToFavorite";
+import {useSelector} from "react-redux";
 
 export const Recipes = () => {
+    const searchRecipes = useSelector(state => state.recipes.recipes)
     const [recipes, setRecipes] = useState([])
     const [filteredRecipes, setFilteredRecipes] = useState([])
     const [isPending, setPending] = useState(false)
     const [filter, setFilter] = useState()
+    const [favorites, setFavorites] = useState([])
 
     useEffect(async () => {
         setPending(true)
@@ -27,11 +31,32 @@ export const Recipes = () => {
 
     useMemo(() => {
         if (filter !== 0) {
+            setFilteredRecipes(recipes.filter(recipe => {
+                if (searchRecipes.length > 0)
+                    return recipe.MEALTYPEID === filter && searchRecipes.includes(recipe.ID)
+                else
+                    return recipe.MEALTYPEID === filter
+            }))
+        }
+    }, [filter, recipes])
+
+    useMemo(() => {
+        if (searchRecipes.length > 0) {
             setFilteredRecipes(recipes.filter(recipe =>
-                recipe.MEALTYPEID === filter
-            ))}
-        },
-        [filter])
+                searchRecipes.includes(recipe.ID)
+            ))
+        }
+    }, [searchRecipes])
+
+    useEffect(  () => {
+        axios.get('http://localhost:8000/api/favorites',
+            {
+                headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+            })
+            .then(response => {
+                setFavorites(response.data)
+            })
+    }, [])
 
     return (
         isPending ?
@@ -42,11 +67,16 @@ export const Recipes = () => {
                 <Filter setFilter={setFilter}/>
                 <ul className="recipe">
                     {
-                        filteredRecipes
-                            .map(recipe => {
-                            return (
-                                <RecipesItem key={recipe.ID} recipe={recipe}/>
-                            )}
+                        filteredRecipes.map(recipe => {
+                                return (
+                                    <li key={recipe.ID}>
+                                        <RecipesItem
+                                            recipe={recipe}
+                                            favorites={favorites}
+                                        />
+                                    </li>
+                                )
+                            }
                         )
                     }
                 </ul>

@@ -1,5 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
-
+import React from "react"
 import "../../App.scss"
 import firstImage from "../../assets/1.jpg";
 import secondImage from "../../assets/2.jpg";
@@ -18,28 +17,48 @@ const images = [firstImage,
     sixthImage,
     seventhImage]
 
-export const SearchContainer = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const delay = 10000;
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            if (currentIndex < images.length - 1) {
-                setCurrentIndex(currentIndex + 1);
-            } else {
-                setCurrentIndex(0);
-            }
-            return currentIndex
-        }, 5000)
+export function SearchContainer() {
+    const [index, setIndex] = React.useState(0);
+    const timeoutRef = React.useRef(null);
 
-        return () => clearInterval(intervalId);
-    })
+    function resetTimeout() {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+    }
+
+    React.useEffect(() => {
+        resetTimeout();
+        timeoutRef.current = setTimeout(
+            () =>
+                setIndex((prevIndex) =>
+                    prevIndex === images.length - 1 ? 0 : prevIndex + 1
+                ),
+            delay
+        );
+
+        return () => {
+            resetTimeout();
+        };
+    }, [index]);
 
     return (
-        <div className="search-container">
-            <img src={images[currentIndex]}/>
-            <div className="search">
-                <Search/>
+        <div className="slideshow">
+            <div
+                className="slideshowSlider"
+                style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+            >
+                {images.map((backgroundColor, index) => (
+                    <img
+                        className="slide"
+                        key={index}
+                        src={backgroundColor}
+                    ></img>
+                ))}
             </div>
+            <Search/>
         </div>
-    )
+    );
 }

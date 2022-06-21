@@ -1,0 +1,13 @@
+:is(button.button-favorite-like, button.button-favorite-dislike) {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  img {
+    width: 2em;
+    height: 2em;
+  }
+
+}

@@ -10,8 +10,6 @@ export const Recipe = () => {
     const [recipe, setRecipe] = useState({})
     const [isPending, setPending] = useState(false)
     const {id} = useParams();
-    const isAuthorized = useSelector(state => state.user)
-    console.log(isAuthorized)
 
     useEffect(async () => {
         setPending(true)
@@ -32,7 +30,7 @@ export const Recipe = () => {
         DIRECTIONS: directions,
         IMAGE: image,
         CALORIES: calories,
-        INGREDIENTs: ingredients,
+        ingredients: ingredients,
         USER: user
     } = recipe
 
@@ -71,7 +69,7 @@ export const Recipe = () => {
                                 {ingredients?.map(ingredient => {
                                     return (
                                         <li className="ingredients-item" key={ingredient.ID}>
-                                            {ingredient.RECIPEINGREDIENTS?.QUANTITYOFINGREDIENT} {ingredient.NAME}
+                                            {ingredient.recipe_ingredient?.QUANTITYOFINGREDIENT} {ingredient.NAME}
                                         </li>
                                     )
                                 })}

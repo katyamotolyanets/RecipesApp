@@ -11,19 +11,34 @@
   animation: bg 1s;
 }
 
-.search-field input {
+.search-field {
+  display: flex;
+  max-width: 50vw;
+  max-height: 2.5em;
   width: 100%;
-  border: solid 1px transparent;
-  border-radius: 1.2em;
-  padding-left: 10%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+}
+.search-field form {
+  width: 100%;
   max-height: 2.5em;
   height: 100%;
+}
+.search-field form input {
+  max-height: 2.5em;
+  height: 100%;
+  width: 70%;
+  border: solid 1px transparent;
+  border-radius: 1.2em;
+  padding-left: 7%;
   font-size: 1vmax;
   opacity: 0.7;
   background: white url(../assets/search-icon.png) no-repeat 2% 50%;
-  background-size: 6%;
+  background-size: 5%;
 }
-.search-field input::selection {
+.search-field form input::selection {
   background-color: #c4ad80;
 }
 
@@ -34,58 +49,87 @@
   }
 }
 .filter-container {
-  width: fit-content;
-  height: fit-content;
-  max-height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
 }
-.filter-container select {
-  width: fit-content;
-  height: fit-content;
+.filter-container .filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 15em;
+  width: 100%;
+  max-height: 2.8em;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 1em;
+  border: 1px solid #917b4e;
+  padding: 1%;
+  margin: 0 1%;
 }
 
-.search-container {
-  position: relative;
-  display: flex;
-  max-height: 10%;
-  max-width: 100%;
-}
-.search-container img {
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 100vw;
   width: 100vw;
-  max-height: 30em;
+  position: relative;
+}
+.slideshow .slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+.slideshow .slideshowSlider .slide {
+  display: inline-block;
+  height: 30em;
+  width: 100%;
   object-fit: cover;
 }
-.search-container div {
-  display: flex;
-  position: absolute;
-  left: 35%;
-  top: 45%;
-  max-width: 30%;
-  width: 100%;
-  height: 100%;
-}
 
-@media screen and (max-width: 900px) {
-  .search-container img {
-    height: 20em;
-  }
-}
 .authorization-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5% 0;
-  border: 1px solid black;
-  max-width: 30vw;
-  max-height: 35vh;
+  padding: 3%;
+  border: 1px solid #917b4e;
+  border-radius: 3em;
+  max-width: 25%;
   width: 100%;
   height: 100%;
+  margin: 5% auto;
 }
 .authorization-container .authorization-form {
-  max-height: 35vh;
   display: flex;
   flex-direction: column;
+  padding: 5% 0;
 }
+.authorization-container .authorization-form .authorization-input {
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 3% 0;
+}
+.authorization-container .authorization-form button {
+  background-color: #dfd2b9;
+  padding: 2% 0;
+  margin: 5% 0;
+  border: 1px solid #dfd2b9;
+  border-radius: 1em;
+  font-family: Nunito;
+}
+.authorization-container .authorization-form .authorization-label {
+  padding: 2% 0;
+}
+.authorization-container .authorization-form .error-message {
+  text-align: center;
+  color: #ff6666;
+}
+.authorization-container .authorization-form a {
+  text-align: center;
+  color: #917b4e;
+}
+
 .recipes-container {
   display: flex;
   flex-direction: column;
@@ -120,6 +164,7 @@
   width: 100%;
   max-width: 15em;
   margin: 1%;
+  position: relative;
 }
 .recipes-container .recipes-list ul.recipe li a {
   border: none;
@@ -387,15 +432,94 @@ h1 {
     max-height: 1.5em;
   }
 }
-.creation-form {
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+.user-profile-container > input[type=radio] {
+  display: none;
+  border: none;
+}
+.user-profile-container > div {
+  display: none;
+}
+.user-profile-container #tab-btn-1:checked ~ #content-1,
+.user-profile-container #tab-btn-2:checked ~ #content-2 {
+  display: block;
+}
+.user-profile-container > label {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #fff;
+  padding: 1%;
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  top: 1px;
+  border: none;
+}
+.user-profile-container > label:not(:first-of-type) {
+  border-left: none;
+}
+.user-profile-container > input[type=radio]:checked + label {
+  background-color: #c4ad80;
+}
+.user-profile-container .creation-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.creation-form .recipe-creation-form {
+.user-profile-container .creation-form .recipe-creation-form {
   display: flex;
   flex-direction: column;
+}
+.user-profile-container h1 {
+  white-space: nowrap;
+  text-align: center;
+  padding: 1%;
+  color: #917b4e;
+  font-family: "Prosto One";
+  font-weight: normal;
+}
+.user-profile-container .logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 8em;
+  width: 100%;
+  max-height: 2.8em;
+  height: 100%;
+  background-color: #dfd2b9;
+  border-radius: 1em;
+  border: 1px solid #917b4e;
+  padding: 1%;
+  margin: 0 1%;
+}
+
+:is(button.button-favorite-like, button.button-favorite-dislike) {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+:is(button.button-favorite-like, button.button-favorite-dislike) img {
+  width: 2em;
+  height: 2em;
+}
+
+.user-profile-message {
+  position: relative;
+  text-align: center;
+  font-size: 2em;
 }
 
 @font-face {
@@ -427,6 +551,7 @@ h1 {
 
 body {
   font-family: "Nunito";
+  overflow-x: hidden;
 }
 
 button, input {

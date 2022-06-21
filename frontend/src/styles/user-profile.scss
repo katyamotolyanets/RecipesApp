@@ -1,10 +1,76 @@
-.creation-form {
+@import "utils/variables/colors";
+
+.user-profile-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  .recipe-creation-form {
+  align-items: center;
+  margin: 2%;
+
+  &>input[type="radio"] {
+    display: none;
+    border: none;
+  }
+  &>div {
+    display: none;
+  }
+  #tab-btn-1:checked~#content-1,
+  #tab-btn-2:checked~#content-2 {
+    display: block;
+  }
+  &>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #fff;
+    padding: 1%;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+    border: none;
+  }
+
+  &>label:not(:first-of-type) {
+    border-left: none;
+  }
+  &>input[type="radio"]:checked+label {
+    background-color: $lightBeige;
+  }
+
+  .creation-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .recipe-creation-form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  h1 {
+    white-space: nowrap;
+    text-align: center;
+    padding: 1%;
+    color: $accentTextColor;
+    font-family: "Prosto One";
+    font-weight: normal;
+  }
+  .logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 8em;
+    width: 100%;
+    max-height: 2.8em;
+    height: 100%;
+    background-color: $lightButtonColor;
+    border-radius: 1em;
+    border: 1px solid $accentTextColor;
+    padding: 1%;
+    margin: 0 1%;
   }
 }
+

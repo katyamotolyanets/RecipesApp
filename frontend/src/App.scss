@@ -7,6 +7,8 @@
 @import "styles/recipe";
 @import "styles/navbar";
 @import "styles/user-profile";
+@import "styles/button-favorite";
+@import "styles/unathorized-user-profile";
 @import "styles/utils/fonts/nunito";
 @import "styles/utils/fonts/prosto-one";
 
@@ -18,6 +20,8 @@
 
 body {
   font-family: "Nunito";
+  overflow-x: hidden;
+
 }
 button, input {
   font-family: "Nunito";

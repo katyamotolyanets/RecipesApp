@@ -12,8 +12,6 @@ const {
     registration,
     login,
     auth,
-    getFavorites,
-    addFavorite
 } = require('../controllers/api-user-controller')
 const authMiddleware = require('../middleware/auth.middleware')
 
@@ -31,6 +29,5 @@ router.post('/api/login', [
 router.get('/api/auth', authMiddleware, auth)
 router.get('/api/users', getUsers);
 router.get('/api/users/:id', getUser);
-router.post('/api/favorites', addFavorite);
 
 module.exports = router

@@ -1,19 +1,44 @@
+@import "utils/variables/colors";
+
 .authorization-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5% 0;
-  border: 1px solid black;
-  max-width: 30vw;
-  max-height: 35vh;
+  padding: 3%;
+  border: 1px solid $accentTextColor;
+  border-radius: 3em;
+  max-width: 25%;
   width: 100%;
   height: 100%;
+  margin: 5% auto;
   .authorization-form {
-    max-height: 35vh;
     display: flex;
     flex-direction: column;
+    padding: 5% 0;
     .authorization-input {
+      border: none;
+      border-bottom: 1px solid black;
+      margin: 3% 0;
+    }
+    button {
+      background-color: $lightButtonColor;
+      padding: 2% 0;
+      margin: 5% 0;
+      border: 1px solid $lightButtonColor;
+      border-radius: 1em;
+      font-family: Nunito;
+    }
+    .authorization-label {
+      padding: 2% 0;
+    }
+    .error-message {
+      text-align: center;
+      color: $errorMessageColor;
+    }
+    a {
+      text-align: center;
+      color: $accentTextColor;
     }
   }
 }

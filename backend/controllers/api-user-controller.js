@@ -4,10 +4,9 @@ const {validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 
 const User = require("../models/User");
-const Favorite = require("../models/Favorite");
 const Recipe = require("../models/Recipe");
 
-const JWT_ACCESS_SECRET_KEY = process.env.JWT_ACCESS_SECRET_KEY
+const {JWT_ACCESS_SECRET_KEY} = process.env
 
 const getUsers = (req, res) => {
     User.findAll().then(response => {
@@ -23,7 +22,7 @@ const getUser = (req, res) => {
             },
             include: {
                 model: Recipe,
-                attributes: ['ID', 'TITLE', 'IMAGE'],
+                attributes: ['ID', 'TITLE', 'IMAGE', 'TIMEOFCOOKING'],
                 through: {
                     attributes: []
                 }
@@ -102,26 +101,10 @@ const auth = async (req, res) => {
         }})
 }
 
-const addFavorite = (req, res) => {
-    const favorite = {
-        USERID: req.body.userID,
-        RECIPEID: req.body.recipeID
-    }
-    Favorite.create(favorite)
-        .then(data => {
-            res.status(200).json(data)
-        })
-        .catch((err) => {
-            console.log(err)
-            res.status(500).json({message: err})
-        })
-}
-
 module.exports = {
     getUsers,
     getUser,
     registration,
     login,
     auth,
-    addFavorite
 }

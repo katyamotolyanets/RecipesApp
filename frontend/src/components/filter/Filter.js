@@ -6,7 +6,6 @@ import {FilterButton} from "./FilterButton";
 
 export const Filter = (props) => {
     const [mealTypes, setMealTypes] = useState([])
-    const [filter, setFilter] = useState(0)
 
     useEffect(() => {
         axios({
@@ -16,7 +15,7 @@ export const Filter = (props) => {
             .then(response => {
                 setMealTypes(response.data)
             })
-    })
+    }, [])
 
     const filterList = mealTypes.map(mealType => {
         const {ID: id, NAME: name} = mealType
